@@ -1,16 +1,16 @@
 {{ $data := index .Site.Data .Site.Language.Lang }}
 
-{{ if $data.homepage.products.enable }}
-<section class="gallery" id="products">
+{{ if $data.homepage.kings.enable }}
+<section class="gallery" id="kings">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="heading">
-          <h2>{{ $data.homepage.products.title | markdownify }}</h2>
+          <h2>{{ $data.homepage.kings.title | markdownify }}</h2>
         </div>
 
         <div class="product-slider">
-          {{ range (where .Site.RegularPages "Section" "products") }}
+          {{ range (where .Site.RegularPages "Section" "kings") }}
           <div class="block">
             <div class="gallery-overlay">
               <a href="{{ .Permalink }}" class="gallery-popup">
