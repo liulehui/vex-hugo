@@ -5,53 +5,135 @@
     <div class="row">
       <div class="col-12 text-center mb-5">
         <h1 class="font-weight-bold">{{.Title}}</h1>
+        <!-- <p class="lead">{{.Description}}</p> -->
       </div>
-      {{ range (where .Site.RegularPages "Section" "kittens") }}
-      <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <div class="block">
-          <div class="gallery-overlay">
-            <a href="{{ .Permalink }}" class="gallery-popup">
-              <!-- <i class="tf-ion-plus-round"></i> -->
-            </a>
-          </div>
-          <img class="img-fluid" src="{{range first 1 .Params.images}}{{.|absURL}}{{end}}" alt="{{.Title}}">
-        </div>
-        <div class="product-info">
-        <h4 class="mb-2"><a href="{{.Permalink}}" class="link-title">{{.Title}}</a></h4>
-        <!-- <p class="price">{{if .Params.discount_price}}{{site.Params.currency}}{{.Params.discount_price}}{{else}}{{site.Params.currency}}{{.Params.price}}{{end}}
-          {{if .Params.discount_price}}<s class="price">{{site.Params.currency}}{{ .Params.price }}</s>{{end}}
-          </p> -->
-        </div>
-      </div>
-      {{ else }}
-      <div>
-        <h2>We are excited to announce that our first litter of the year is expected in <b>late August</b> and we are now open for
-        reservations!<br></h2>
-        <h2><br></h2>
-        <h2>Each of our kittens will come with:<br></h2>
-        <h2><br></h2>
-        
-          <h5>
-            <ol>
-<!--               <li><b>2-week</b> trial period!</li> -->
-              <li>Three shots of FVRCP vaccination</li>
-              <li>Comprehensive vet check-up and health certificate</li>
-              <li>One shot of rabies vaccine if needed</li>
-              <li>Microchipped</li>
-              <li>Dewormed</li>
-              <li>Spayed/neutered</li>
-              <li>CFA registration certificate</li>
-              <li>A copy of the health tests of parents</li>
-              <li>Onboarding package (dry food, wet canned food, carrier, toys)</li>
-              <li>Contract</li>
-              <li>Free delivery around Boston, Seattle, Oregon, and Vancouver</li>
-            </ol>
-          </h5>
-        </div>
-       
-      {{ end }}
     </div>
+
+    <!-- Kitten Information Section -->
+    <div class="row">
+      <div class="col-12">
+        <div class="kitten-info-section">
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <div class="kitten-announcement">
+                <h2 class="mb-4 text-primary"> We have kittens available!</h2>
+                <!-- <h3 class="mb-4">We are excited to announce that our first litter of the year is expected in <strong
+                    class="text-primary">late August</strong> and we are now open for reservations!</h3> -->
+    
+                <h4 class="mb-3">Each of our kittens will come with:</h4>
+                <div class="kitten-benefits">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <ul class="benefits-list">
+                        <li><i class="tf-ion-checkmark-circled text-primary"></i> Comprehensive veterinary examination</li>
+                        <li><i class="tf-ion-checkmark-circled text-primary"></i> Complete four-dose vaccination</li>
+                        <li><i class="tf-ion-checkmark-circled text-primary"></i> Microchipped</li>
+                        <li><i class="tf-ion-checkmark-circled text-primary"></i> Dewormed</li>
+                        <li><i class="tf-ion-checkmark-circled text-primary"></i> Spayed/neutered</li>
+                        <li><i class="tf-ion-checkmark-circled text-primary"></i> Medical and vaccination records</li>
+                        <li><i class="tf-ion-checkmark-circled text-primary"></i> CFA Ragdoll Pedigree Certificate</li>
+                      </ul>
+                    </div>
+                    <div class="col-md-6">
+                      <ul class="benefits-list">
+                        <li><i class="tf-ion-checkmark-circled text-primary"></i> Royal Canin Official Welcome Kit</li>
+                        <li><i class="tf-ion-checkmark-circled text-primary"></i> A copy of the health tests of parents</li>
+                        <li><i class="tf-ion-checkmark-circled text-primary"></i> Onboarding package (food, carrier, toys, cat litter)</li>
+                        <li><i class="tf-ion-checkmark-circled text-primary"></i> Free delivery around California, Boston, Seattle, Oregon</li>
+                        <li><i class="tf-ion-checkmark-circled text-primary"></i> 35% off for first order on Royal Canin official Website</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="reservation-cta">
+                <div class="cta-card">
+                  <h4 class="mb-3">Ready to Adopt?</h4>
+                  <p class="mb-4">Contact us today to reserve your perfect Ragdoll companion!</p>
+                  <a href="/{{ .Site.Language.Lang }}/contact" class="btn btn-main btn-lg w-100">
+                    <i class="tf-ion-email"></i> Contact Us
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Kitten Gallery Showcase -->
+    {{ if .Params.images }}
+    <div class="row mb-5">
+      <div class="col-12">
+        <div class="kitten-gallery-showcase">
+          <div class="row">
+            {{ range .Params.images }}
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+              <div class="kitten-gallery-item">
+                <div class="gallery-image-wrapper">
+                  <img src="{{ . | absURL }}" alt="Adorable Ragdoll Kitten" class="img-fluid gallery-img">
+                  <div class="gallery-overlay">
+                    <div class="overlay-content">
+                      <button class="btn btn-main gallery-btn" onclick="openLightbox('{{ . | absURL }}')">
+                        <i class="tf-ion-search"></i> View Full Size
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+
+    
+
+    <!-- Available Kittens -->
+    {{ range (where .Site.RegularPages "Section" "kittens") }}
+    <div class="row mt-5">
+      <div class="col-12">
+        <div class="available-kittens">
+          <h3 class="mb-4">Available Kittens</h3>
+          <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+              <div class="kitten-card">
+                <div class="kitten-image-wrapper">
+                  {{ if .Params.images }}
+                  <img src="{{ (index .Params.images 0) | absURL }}" alt="{{ .Title }}" class="img-fluid">
+                  {{ end }}
+                  <div class="kitten-overlay">
+                    <a href="{{ .Permalink }}" class="btn btn-main btn-sm">View Details</a>
+                  </div>
+                </div>
+                <div class="kitten-info">
+                  <h5 class="mb-1">{{ .Title }}</h5>
+                  <p class="text-muted mb-0">{{ .Params.breed | default "Ragdoll" }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ end }}
   </div>
 </section>
+
+<!-- Lightbox Modal -->
+<div id="imageLightbox" class="lightbox-modal">
+  <div class="lightbox-content">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightboxImage" class="lightbox-img">
+    <div class="lightbox-nav">
+      <button id="prevBtn" class="lightbox-btn lightbox-prev">&#10094;</button>
+      <button id="nextBtn" class="lightbox-btn lightbox-next">&#10095;</button>
+    </div>
+  </div>
+</div>
 
 {{ end }}
