@@ -23,6 +23,47 @@
         </ul>
       </div>
       {{ end }}
+      <div class="col-lg-5 col-sm-6 mb-5">
+        {{ if eq .Lang "zh" }}
+        {{ with .Params.selection_process }}
+        <h2 class="font-weight-bold mb-4">{{ .title | markdownify }}</h2>
+        <p>{{ .description | markdownify }}</p>
+        <h4 class="font-weight-bold mt-4">我们为每只猫咪提供以下资料：</h4>
+        <ul class="list-unstyled">
+          {{ range .kitten_info }}
+          <li>{{ . | markdownify }}</li>
+          {{ end }}
+        </ul>
+        <h4 class="font-weight-bold mt-4">{{ .selection_methods.title | markdownify }}</h4>
+        <p>{{ .selection_methods.on_site | markdownify }}</p>
+        <p>{{ .selection_methods.remote | markdownify }}</p>
+        <h4 class="font-weight-bold mt-4">{{ .decision_process.title | markdownify }}</h4>
+        <h5 class="font-weight-bold mt-3">{{ .decision_process.if_selected.title | markdownify }}</h5>
+        <p>{{ .decision_process.if_selected.deposit | markdownify }}</p>
+        <h5 class="font-weight-bold mt-3">{{ .decision_process.if_not_selected.title | markdownify }}</h5>
+        <p>{{ .decision_process.if_not_selected.skip | markdownify }}</p>
+        {{ end }}
+        {{ else }}
+        {{ with .Params.selection_process_en }}
+        <h2 class="font-weight-bold mb-4">{{ .title | markdownify }}</h2>
+        <p>{{ .description | markdownify }}</p>
+        <h4 class="font-weight-bold mt-4">We will provide the following information for each kitten:</h4>
+        <ul class="list-unstyled">
+          {{ range .kitten_info }}
+          <li>{{ . | markdownify }}</li>
+          {{ end }}
+        </ul>
+        <h4 class="font-weight-bold mt-4">{{ .selection_methods.title | markdownify }}</h4>
+        <p>{{ .selection_methods.on_site | markdownify }}</p>
+        <p>{{ .selection_methods.remote | markdownify }}</p>
+        <h4 class="font-weight-bold mt-4">{{ .decision_process.title | markdownify }}</h4>
+        <h5 class="font-weight-bold mt-3">{{ .decision_process.if_selected.title | markdownify }}</h5>
+        <p>{{ .decision_process.if_selected.deposit | markdownify }}</p>
+        <h5 class="font-weight-bold mt-3">{{ .decision_process.if_not_selected.title | markdownify }}</h5>
+        <p>{{ .decision_process.if_not_selected.skip | markdownify }}</p>
+        {{ end }}
+        {{ end }}
+      </div>
       <div class="col-lg-3 col-sm-6 mb-5">
         {{ with .Params.opennig_hour }}
         <h2 class="font-weight-bold mb-4">{{ .title | markdownify }}</h2>
